@@ -9,29 +9,30 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 export async function uploadImageToSupabase(url: string, filename: string): Promise<string | null> {
   try {
     const response = await fetch(url);
-    if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
+    if (!response.ok) throw new Error(`Failed to fetch image from Telegram`);
     
     const arrayBuffer = await response.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     
-    // Upload to Supabase Storage
-    const { data, error } = await supabase.storage
-      .from('shop-images')
-      .upload(`bot/${filename}`, buffer, {
-        contentType: 'image/jpeg',
-        upsert: true
-      });
-
-    if (error) {
-      console.error("Supabase storage error:", error);
-      return null;
+    // Upload to Telegraph (free, no auth required, no buckets needed!)
+    const form = new FormData();
+    const blob = new Blob([buffer], { type: 'image/jpeg' });
+    form.append('file', blob, filename);
+    
+    const uploadRes = await fetch('https://telegra.ph/upload', {
+      method: 'POST',
+      body: form
+    });
+    
+    const data = await uploadRes.json();
+    if (data && data[0] && data[0].src) {
+      return 'https://telegra.ph' + data[0].src;
     }
     
-    // Get public URL
-    const { data: publicUrlData } = supabase.storage.from('shop-images').getPublicUrl(`bot/${filename}`);
-    return publicUrlData.publicUrl;
+    console.error("Telegraph upload failed:", data);
+    return null;
   } catch (error) {
-    console.error("Error downloading image:", error);
+    console.error("Error downloading/uploading image:", error);
     return null;
   }
 }
