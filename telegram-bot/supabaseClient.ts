@@ -77,12 +77,10 @@ export async function insertProduct(
     rating: 5.0,
     reviews_count: 0,
     image: imageUrls.length > 0 ? imageUrls[0] : null,
-    images: extraImages,
     specifications: specs,
-    colors: [],
-    mechanism: "Avtomatik",
     is_active: true,
     is_new: true,
+    is_featured: false,
     created_at: now,
     updated_at: now
   };
@@ -92,6 +90,12 @@ export async function insertProduct(
     console.error("Supabase DB Insert error:", error);
     throw new Error(error.message || "Baza xatosi");
   }
+  
+  if (extraImages.length > 0) {
+    const { error: imgError } = await supabase.from('product_images').insert(extraImages);
+    if (imgError) console.error("Images insert error:", imgError);
+  }
+  
   return id;
 }
 
