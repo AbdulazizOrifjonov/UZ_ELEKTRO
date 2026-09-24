@@ -118,6 +118,33 @@ bot.on("channel_post", async (ctx) => {
   }
 });
 
+// Oddiy matn kelsa (rasmdan keyin yuborilgan bo'lsa), uni rasmga biriktiramiz
+bot.on(message("text"), async (ctx) => {
+  const text = ctx.message.text;
+  
+  // Eng so'nggi yaratilgan guruhni topamiz
+  let latestGroupId: string | null = null;
+  let latestGroup: PendingProduct | null = null;
+  
+  for (const [id, group] of pendingGroups.entries()) {
+    if (!latestGroup || group.messageId > latestGroup.messageId) {
+      latestGroupId = id;
+      latestGroup = group;
+    }
+  }
+
+  if (latestGroup && latestGroupId) {
+    if (!latestGroup.text) latestGroup.text = text;
+    else latestGroup.text += "\n" + text;
+    
+    // Taymerni yangilaymiz
+    clearTimeout(latestGroup.timer);
+    latestGroup.timer = setTimeout(() => processMediaGroup(ctx, latestGroupId as string), 3000);
+  } else {
+    await ctx.reply("Iltimos, oldin rasm yuboring, yoki rasmni o'ziga izoh (caption) qilib yozing.");
+  }
+});
+
 async function processMediaGroup(ctx: Context, mediaGroupId: string) {
   const group = pendingGroups.get(mediaGroupId);
   if (!group) return;
