@@ -826,6 +826,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T12:20:00.000Z",
     updated_at: "2025-01-26T12:20:00.000Z",
+  },
+  {
+    id: "p-ockean-udarnaya-otvertka",
+    name: "OCKEAN Zarbli Otvyortka (Krestli)",
+    slug: "ockean-zarbli-otvyortka",
+    description: "OCKEAN — og'ir ish sharoitlari uchun mo'ljallangan professional zarbli otvyortka (udarnaya otvyortka). Qotib qolgan yoki zanglagan burama mixlarni (shuruplarni) bolg'a yordamida urib bo'shatish uchun metall o'zakka ega. Rezina va plastik aralashmali tutqichi sirpanishni oldini oladi. Krestli (Phillips) uchi yuqori sifatli po'latdan ishlangan.",
+    price: 25000,
+    old_price: 35000,
+    discount: 28,
+    category_id: "cat-aksessuarlar", 
+    brand: "OCKEAN",
+    stock: 250,
+    sku: "OCK-OTV-UDAR",
+    rating: 4.8,
+    reviews_count: 52,
+    image: "/products/ockean_udarnaya_otvertka.jpg",
+    images: [],
+    specifications: {
+      "Turi": "Zarbli (Udarniy) otvyortka",
+      "Uchi turi": "Krestli (Phillips / PH)",
+      "Material": "Krom-vanadiy po'lat (Cr-V)",
+      "Xususiyati": "Bolg'a bilan urish uchun metall o'zak"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T12:25:00.000Z",
+    updated_at: "2025-01-26T12:25:00.000Z",
   }
 ];
 
