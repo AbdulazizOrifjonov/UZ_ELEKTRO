@@ -552,6 +552,35 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: false,
     created_at: "2025-01-25T10:00:00.000Z",
     updated_at: "2025-01-25T10:00:00.000Z",
+  },
+  {
+    id: "p-veral-ruletka-5m",
+    name: "VERAL Electric 5 metrli o'lchov tasmasi (Ruletka)",
+    slug: "veral-electric-5m-ruletka",
+    description: "VERAL Electric — professional o'lchov ishlari uchun yuqori sifatli 5 metrli ruletka. Lentasining qalinligi 19mm, aniq va yorqin shkalaga ega. Ergonomik kauchuk korpusi sirpanib ketishdan va zarbadan himoya qiladi. Avtomatik qulflanish funksiyasi ishlashni osonlashtiradi.",
+    price: 20000,
+    old_price: 30000,
+    discount: 33,
+    category_id: "cat-lazer-olchov",
+    brand: "VERAL electric",
+    stock: 50,
+    sku: "VRL-5M-19",
+    rating: 5.0,
+    reviews_count: 12,
+    image: "/products/veral_5m.jpg",
+    images: [],
+    specifications: {
+      "O'lchov uzunligi": "5 metr",
+      "Tasma kengligi": "19 mm",
+      "Material": "ABS plastik + Kauchuk",
+      "Korpus xususiyati": "Zarbaga chidamli",
+      "Avto-qulflash": "Mavjud"
+    },
+    mechanism: "Mexanik",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T10:00:00.000Z",
+    updated_at: "2025-01-26T10:00:00.000Z",
   }
 ];
 
