@@ -666,6 +666,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T10:25:00.000Z",
     updated_at: "2025-01-26T10:25:00.000Z",
+  },
+  {
+    id: "p-rur-r1817",
+    name: "RUR R1817 Indikatorli Otvyortka (Tok tekshirgich)",
+    slug: "rur-r1817-indikatorli-otvyortka",
+    description: "RUR (Model: R1817) — elektr toki bor-yo'qligini xavfsiz va aniq tekshirish uchun mo'ljallangan indikatorli otvyortka. Uch qismi yuqori sifatli qotishmadan qilingan bo'lib, oddiy otvyortka sifatida ham ishlatish mumkin. Chirog'i yorqin yonadi va tutqichi qulay plastikdan ishlangan.",
+    price: 12000,
+    old_price: 18000,
+    discount: 33,
+    category_id: "cat-aksessuarlar", 
+    brand: "RUR",
+    stock: 120,
+    sku: "RUR-R1817",
+    rating: 4.8,
+    reviews_count: 22,
+    image: "/products/rur_r1817.png",
+    images: [],
+    specifications: {
+      "Turi": "Indikatorli (Tester)",
+      "Vazifasi": "Elektr toki mavjudligini tekshirish",
+      "Model": "R1817",
+      "Material": "Izolyatsiyalangan plastmassa va po'lat"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T10:30:00.000Z",
+    updated_at: "2025-01-26T10:30:00.000Z",
   }
 ];
 
