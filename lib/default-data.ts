@@ -694,6 +694,35 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T10:30:00.000Z",
     updated_at: "2025-01-26T10:30:00.000Z",
+  },
+  {
+    id: "p-rur-r3039",
+    name: "RUR R3039 Krokodil (Ploskogubsi / Klyuch)",
+    slug: "rur-r3039-krokodil-ploskogubsi",
+    description: "RUR (Model: R3039) — santexnika va mexanika ishlari uchun mo'ljallangan universal sozlanuvchi qisqich (krokodil / gazoviy klyuch). Turli o'lchamdagi truba va gaykalarni mahkam siqish uchun ko'p pog'onali sozlash mexanizmiga ega. Yuqori mustahkamlikdagi po'latdan ishlangan, tutqichi sirpanmaydigan qoplamali.",
+    price: 95000,
+    old_price: 120000,
+    discount: 21,
+    category_id: "cat-aksessuarlar", 
+    brand: "RUR",
+    stock: 60,
+    sku: "RUR-R3039",
+    rating: 5.0,
+    reviews_count: 18,
+    image: "/products/rur_r3039.png",
+    images: [],
+    specifications: {
+      "Turi": "Sozlanuvchi qisqich (Krokodil)",
+      "Model": "R3039",
+      "Material": "Yuqori sifatli karbonli po'lat",
+      "Tutqich": "Sirpanmaydigan, ergonomik qoplama",
+      "Qo'llanilishi": "Santexnika, mexanika, ta'mirlash"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T10:35:00.000Z",
+    updated_at: "2025-01-26T10:35:00.000Z",
   }
 ];
 
