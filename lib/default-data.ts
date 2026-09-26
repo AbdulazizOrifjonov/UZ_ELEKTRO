@@ -601,6 +601,35 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:40:00.000Z",
     updated_at: "2025-01-26T11:40:00.000Z",
+  },
+  {
+    id: "p-teh-th8516",
+    name: "TEH TH8516 Otboynik (Отбойный молоток) 50J",
+    slug: "teh-th8516-otboynik-50j",
+    description: "TEH (Model: TH8516) — og'ir qurilish va buzish ishlari uchun mo'ljallangan juda kuchli otboynik (perforator). Zarba kuchi 50 Joul bo'lib, beton, asfalt va toshlarni osongina maydalaydi. Zarbalar chastotasi daqiqasiga 1900 marta. Sanoat darajasidagi asbob.",
+    price: 2250000,
+    old_price: 2600000,
+    discount: 13,
+    category_id: "cat-perforatorlar", 
+    brand: "TEH",
+    stock: 10,
+    sku: "TH-8516",
+    rating: 5.0,
+    reviews_count: 8,
+    image: "/products/teh_otboynik_th8516.png",
+    images: [],
+    specifications: {
+      "Zarba kuchi": "50 J",
+      "Zarbalar soni": "1900 zarba/daq",
+      "Quvvati": "1600 Vt (rasmda 160W yozilgani xato bo'lishi mumkin)",
+      "Turi": "Og'ir otboynik (Buzuvchi bolg'a)",
+      "Tarmoq": "220V/50HZ"
+    },
+    mechanism: "Elektr asbob",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:45:00.000Z",
+    updated_at: "2025-01-26T11:45:00.000Z",
   }
 ];
 
