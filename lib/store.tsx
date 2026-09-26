@@ -79,8 +79,12 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
           supabase.from("sliders").select("*").order("sort_order", { ascending: true }),
           supabase.from("orders").select("*").order("created_at", { ascending: false })
         ]);
-        if (p && p.length > 0) setProducts(p);
-        if (c && c.length > 0) setCategories(c);
+        // if (p && p.length > 0) setProducts(p);
+        // if (c && c.length > 0) setCategories(c);
+        // Xozircha (Supabase bazasidagi xatolar tufayli) to'g'ridan to'g'ri kod ichidan olamiz:
+        setProducts(DEFAULT_PRODUCTS);
+        setCategories(DEFAULT_CATEGORIES);
+
         if (s && s.length > 0) {
           const promoConfig = s.find((item) => item.id === "system_promocodes");
           if (promoConfig && promoConfig.subtitle) {
