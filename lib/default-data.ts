@@ -404,6 +404,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:05:00.000Z",
     updated_at: "2025-01-26T11:05:00.000Z",
+  },
+  {
+    id: "p-adegso-ad50211",
+    name: "ADEGSO AD-50211 Universal Hop-Shop Klyuch (2 dona)",
+    slug: "adegso-ad50211-hop-shop-klyuch",
+    description: "ADEGSO (Model: 50211) — 'Ustalar tanlovi' qatoridagi universal klyuchlar to'plami (Hop-Shop klyuch / Snap'n Grip). To'plamda 2 ta har xil o'lchamdagi klyuch bor bo'lib, ular har qanday shakldagi (kvadrat, dumaloq, oltiburchak) gayka va trubkalarni avtomatik ravishda mahkam qisib oladi. Santexnika va avto ta'mirlash uchun juda qulay.",
+    price: 55000,
+    old_price: 70000,
+    discount: 21,
+    category_id: "cat-aksessuarlar", 
+    brand: "ADEGSO",
+    stock: 80,
+    sku: "ADG-50211",
+    rating: 4.8,
+    reviews_count: 22,
+    image: "/products/adegso_wrench_50211.png",
+    images: [],
+    specifications: {
+      "To'plam tarkibi": "2 dona (Katta va kichik klyuch)",
+      "Turi": "Universal o'zi qisuvchi klyuch",
+      "Qo'llanilishi": "Santexnika, mexanika, ro'zg'or ishlari",
+      "Model": "AD-50211"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:10:00.000Z",
+    updated_at: "2025-01-26T11:10:00.000Z",
   }
 ];
 
