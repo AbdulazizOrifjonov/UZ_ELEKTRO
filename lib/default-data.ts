@@ -292,6 +292,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T10:45:00.000Z",
     updated_at: "2025-01-26T10:45:00.000Z",
+  },
+  {
+    id: "p-rur-r1813",
+    name: "RUR R1813 Raqamli Indikatorli Otvyortka (Digital Voltage Tester)",
+    slug: "rur-r1813-raqamli-indikator",
+    description: "RUR (Model: R1813) — tok kuchlanishini LCD displeyda ko'rsatadigan raqamli indikator-tester. Oddiy indikatorlarga qaraganda qulayroq va aniqroq tekshiradi (12V-250V). Ixcham dizayn va sifatli RUR Tools mahsuloti.",
+    price: 30000,
+    old_price: 40000,
+    discount: 25,
+    category_id: "cat-aksessuarlar", 
+    brand: "RUR",
+    stock: 150,
+    sku: "RUR-R1813",
+    rating: 4.8,
+    reviews_count: 21,
+    image: "/products/rur_r1813.png",
+    images: [],
+    specifications: {
+      "Turi": "Raqamli indikator (Voltage Tester)",
+      "Kuchlanish diapazoni": "12V - 250V AC/DC",
+      "Displey": "LCD displey",
+      "Model": "R1813"
+    },
+    mechanism: "Elektron",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T10:50:00.000Z",
+    updated_at: "2025-01-26T10:50:00.000Z",
   }
 ];
 
