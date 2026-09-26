@@ -376,6 +376,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:00:00.000Z",
     updated_at: "2025-01-26T11:00:00.000Z",
+  },
+  {
+    id: "p-adegso-ad50513",
+    name: "ADEGSO AD-50513 Tok o'tkazmaydigan Otvyortkalar to'plami (5 dona)",
+    slug: "adegso-ad50513-dielektrik-otvyortkalar",
+    description: "ADEGSO (Model: 50513) — 'Ustalar tanlovi' qatoriga kiruvchi 5 ta har xil o'lchamdagi dielektrik (tok o'tkazmaydigan) otvyortkalar to'plami. Elektromontaj ishlari uchun maxsus mo'ljallangan bo'lib, xavfsiz ishlashni ta'minlaydi. Ergonomik qizil-sariq tutqich va to'liq izolyatsiya qilingan stervenga ega.",
+    price: 75000,
+    old_price: 95000,
+    discount: 21,
+    category_id: "cat-aksessuarlar", 
+    brand: "ADEGSO",
+    stock: 60,
+    sku: "ADG-50513",
+    rating: 5.0,
+    reviews_count: 18,
+    image: "/products/adegso_screwdrivers_50513.png",
+    images: [],
+    specifications: {
+      "To'plam tarkibi": "5 dona (Krestovoy va ploskiy)",
+      "Izolyatsiya": "Dielektrik (tok o'tkazmaydi)",
+      "Qo'llanilishi": "Elektromontaj va tok ostida ishlash",
+      "Model": "AD-50513"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:05:00.000Z",
+    updated_at: "2025-01-26T11:05:00.000Z",
   }
 ];
 
