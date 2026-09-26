@@ -638,6 +638,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T10:20:00.000Z",
     updated_at: "2025-01-26T10:20:00.000Z",
+  },
+  {
+    id: "p-adegso-knife-10287",
+    name: "ADEGSO 10287 Buklanadigan Oboy pichog'i (Raskladnoy)",
+    slug: "adegso-oboy-pichogi-buklanadigan-10287",
+    description: "ADEGSO (Model: 10287) — ixcham va qulay, buklanadigan (raskladnoy) oboy pichog'i. Pichoq uchi trapez shaklida bo'lib, o'ta o'tkir kesish xususiyatiga ega. Komplektda qo'shimcha zaxira lezviyalar saqlanadigan kichik kassetasi ham bor. 'Ustalar tanlovi' toifasiga kiruvchi yuqori sifatli asbob.",
+    price: 30000,
+    old_price: 40000,
+    discount: 25,
+    category_id: "cat-aksessuarlar", 
+    brand: "ADEGSO",
+    stock: 75,
+    sku: "ADG-10287",
+    rating: 5.0,
+    reviews_count: 12,
+    image: "/products/adegso_knife_10287.png",
+    images: [],
+    specifications: {
+      "Pichoq turi": "Buklanadigan (Raskladnoy / Yig'iluvchi)",
+      "Vazifasi": "Oboy, qog'oz, gipsokarton, linoleum kesish",
+      "Komplektatsiya": "Pichoq + Zaxira pichoqchalar (lezviya)",
+      "Model": "10287"
+    },
+    mechanism: "Mexanik",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T10:25:00.000Z",
+    updated_at: "2025-01-26T10:25:00.000Z",
   }
 ];
 
