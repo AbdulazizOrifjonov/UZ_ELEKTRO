@@ -714,6 +714,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T12:00:00.000Z",
     updated_at: "2025-01-26T12:00:00.000Z",
+  },
+  {
+    id: "p-rur-sekator-r3122",
+    name: "RUR R3122 Bog' Qaychisi (Sekator)",
+    slug: "rur-r3122-sekator",
+    description: "RUR (Model: R3122) — bog'dorchilik ishlari uchun mo'ljallangan universal bog' qaychisi (sekator). Daraxt shoxlari, tok va gullarni kesish uchun juda qulay. O'tkir po'lat tig'i va yengil prujinali mexanizmi tufayli qo'lni charchatmaydi. Sifatli va uzoq muddat xizmat qiladigan asbob.",
+    price: 35000,
+    old_price: 45000,
+    discount: 22,
+    category_id: "cat-aksessuarlar", 
+    brand: "RUR",
+    stock: 150,
+    sku: "RUR-R3122",
+    rating: 4.8,
+    reviews_count: 31,
+    image: "/products/rur_sekator_r3122.png",
+    images: [],
+    specifications: {
+      "Turi": "Bog' qaychisi (Sekator)",
+      "Model": "R3122",
+      "Material": "Yuqori sifatli po'lat",
+      "Vazifasi": "Shox va novdalarni kesish"
+    },
+    mechanism: "Mexanik",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T12:05:00.000Z",
+    updated_at: "2025-01-26T12:05:00.000Z",
   }
 ];
 
