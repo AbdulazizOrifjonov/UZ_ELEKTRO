@@ -544,6 +544,35 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:30:00.000Z",
     updated_at: "2025-01-26T11:30:00.000Z",
+  },
+  {
+    id: "p-biyoti-byt1337",
+    name: "BIYOTI BYT-1337 Devor Kesuvchi (Shtroborez)",
+    slug: "biyoti-byt1337-shtroborez",
+    description: "BIYOTI BYT-1337 — professional devor kesuvchi (shtroborez). Elektr simlari, trubalar va kabellar uchun devorlarda ariqcha (shtroba) ochishga mo'ljallangan. 1500 Vt quvvatli kuchli motor, 125mm disk va qulay dizayn ishlashni osonlashtiradi. Suv ulab ishlash imkoniyati mavjud (chang chiqarmaslik uchun).",
+    price: 1100000,
+    old_price: 1300000,
+    discount: 15,
+    category_id: "cat-bolgarkalar", 
+    brand: "BIYOTI",
+    stock: 12,
+    sku: "BYT-1337",
+    rating: 4.9,
+    reviews_count: 11,
+    image: "/products/biyoti_shtroborez_byt1337.png",
+    images: [],
+    specifications: {
+      "Quvvati": "1500 Vt (Watt)",
+      "Disk diametri": "125 mm",
+      "Turi": "Devor kesuvchi (Shtroborez)",
+      "Vazifasi": "Beton, g'isht va tosh kesish",
+      "Model": "BYT-1337"
+    },
+    mechanism: "Elektr asbob",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:35:00.000Z",
+    updated_at: "2025-01-26T11:35:00.000Z",
   }
 ];
 
