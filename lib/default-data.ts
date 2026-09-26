@@ -742,6 +742,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T12:05:00.000Z",
     updated_at: "2025-01-26T12:05:00.000Z",
+  },
+  {
+    id: "p-ockean-folding-torx",
+    name: "OCKEAN Yig'ma Torx (Yulduzcha) Kalitlar To'plami",
+    slug: "ockean-yigma-torx-kalitlar",
+    description: "OCKEAN brendidan ixcham va yig'iladigan Torx (yulduzcha) kalitlar to'plami. Cho'ntakbop dizayn, ergonomik rezina tutqich va yuqori sifatli po'latdan ishlangan kalitlar. Usta va havaskorlar uchun velosiped, elektronika va maishiy texnikalarni ta'mirlashda ajralmas yordamchi.",
+    price: 50000,
+    old_price: 65000,
+    discount: 23,
+    category_id: "cat-aksessuarlar", 
+    brand: "OCKEAN",
+    stock: 200,
+    sku: "OCK-TORX-FOLD",
+    rating: 4.9,
+    reviews_count: 45,
+    image: "/products/ockean_folding_torx.png",
+    images: [],
+    specifications: {
+      "Turi": "Yig'ma kalitlar to'plami (Folding Keys)",
+      "Uchi turi": "Torx (Yulduzsimon)",
+      "Material": "Krom-vanadiy po'lat (Cr-V)",
+      "Tutqich": "Sirpanmaydigan rezina-plastik"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T12:10:00.000Z",
+    updated_at: "2025-01-26T12:10:00.000Z",
   }
 ];
 
