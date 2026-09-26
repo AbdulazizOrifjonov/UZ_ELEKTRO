@@ -348,6 +348,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T10:55:00.000Z",
     updated_at: "2025-01-26T10:55:00.000Z",
+  },
+  {
+    id: "p-adegso-ad50511",
+    name: "ADEGSO AD-50511 Otvyortkalar to'plami (8 dona)",
+    slug: "adegso-ad50511-otvyortkalar-toplami",
+    description: "ADEGSO (Model: 50511) — 'Ustalar tanlovi' qatoriga kiruvchi 8 ta har xil o'lchamdagi professional otvyortkalar to'plami. Katta, o'rtacha va kalta (bochka) otvyortkalarni o'z ichiga oladi. Magnitlangan uchi, ergonomik va sirpanmaydigan tutqichlari bilan ishlash uchun juda qulay.",
+    price: 95000,
+    old_price: 120000,
+    discount: 21,
+    category_id: "cat-aksessuarlar", 
+    brand: "ADEGSO",
+    stock: 50,
+    sku: "ADG-50511",
+    rating: 4.9,
+    reviews_count: 14,
+    image: "/products/adegso_screwdrivers_50511.png",
+    images: [],
+    specifications: {
+      "To'plam tarkibi": "8 dona (Katta, kichik, kalta otvyortkalar)",
+      "Uch qismi": "Magnitlangan (krestovoy va ploskiy)",
+      "Tutqich": "Sirpanmaydigan kauchuk + plastmassa",
+      "Model": "AD-50511"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:00:00.000Z",
+    updated_at: "2025-01-26T11:00:00.000Z",
   }
 ];
 
