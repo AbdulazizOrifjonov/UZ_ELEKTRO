@@ -581,6 +581,35 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T10:00:00.000Z",
     updated_at: "2025-01-26T10:00:00.000Z",
+  },
+  {
+    id: "p-biyoti-byt2602",
+    name: "BIYOTI BYT-2602 Perforator (Rotary Hammer)",
+    slug: "biyoti-byt-2602-perforator",
+    description: "BIYOTI BYT-2602 — uy va yarim professional qurilish ishlari uchun mo'ljallangan kuchli perforator (otboynik). U 3 ta rejimda ishlaydi: burg'ulash, zarbli burg'ulash va o'yish. Komplektda mustahkam plastik keys, qo'shimcha tutqich, chuqurlik o'lchagich, 3 ta SDS-plus pichoq va 2 ta iskana (zubilo) mavjud. Yuqori sifatli Yevropa standarti asosida ishlab chiqarilgan.",
+    price: 460000,
+    old_price: 520000,
+    discount: 11,
+    category_id: "cat-perforatorlar", 
+    brand: "BIYOTI",
+    stock: 25,
+    sku: "BYT-2602",
+    rating: 4.8,
+    reviews_count: 15,
+    image: "/products/biyoti_byt2602.png",
+    images: [],
+    specifications: {
+      "Ish rejimlari": "3 ta rejim (Teshish, Zarbali teshish, O'yish)",
+      "Patron turi": "SDS-Plus",
+      "Komplektatsiya": "Keys, 3 ta sverlo, 2 ta zubilo",
+      "Standart": "Made for EURO",
+      "Quvvat turi": "Tarmoqli (220V)"
+    },
+    mechanism: "Elektr",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T10:15:00.000Z",
+    updated_at: "2025-01-26T10:15:00.000Z",
   }
 ];
 
