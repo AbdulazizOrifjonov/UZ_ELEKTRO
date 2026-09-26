@@ -263,6 +263,35 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T10:40:00.000Z",
     updated_at: "2025-01-26T10:40:00.000Z",
+  },
+  {
+    id: "p-rur-r1816",
+    name: "RUR R1816 Elektron Indikatorli Otvyortka (Raqamli Displey)",
+    slug: "rur-r1816-elektron-indikator",
+    description: "RUR (Model: R1816) — tok kuchlanishini (12-250V) raqamli displeyda aniq ko'rsatuvchi elektron indikator-otvyortka. Dark Vision funksiyasi tufayli qorong'i joylarda ham ko'rsatkichlarni bemalol o'qish mumkin. Elektriklar va uy ustalari uchun juda qulay va zamonaviy asbob.",
+    price: 40000,
+    old_price: 55000,
+    discount: 27,
+    category_id: "cat-aksessuarlar", 
+    brand: "RUR",
+    stock: 90,
+    sku: "RUR-R1816",
+    rating: 4.9,
+    reviews_count: 17,
+    image: "/products/rur_r1816.png",
+    images: [],
+    specifications: {
+      "Turi": "Elektron indikator (Tester)",
+      "Kuchlanish diapazoni": "AC/DC 12V-250V",
+      "Displey": "Raqamli LCD (Dark Vision)",
+      "Vazifasi": "Tokni va kuchlanishni tekshirish",
+      "Model": "R1816"
+    },
+    mechanism: "Elektron",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T10:45:00.000Z",
+    updated_at: "2025-01-26T10:45:00.000Z",
   }
 ];
 
