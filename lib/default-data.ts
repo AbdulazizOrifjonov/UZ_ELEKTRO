@@ -516,6 +516,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:25:00.000Z",
     updated_at: "2025-01-26T11:25:00.000Z",
+  },
+  {
+    id: "p-adegso-ad40221",
+    name: "ADEGSO 30W Payalnik (Soldering Iron)",
+    slug: "adegso-ad40221-payalnik-30w",
+    description: "ADEGSO (Model: 40221) — elektronika va mayda ta'mirlash ishlari uchun mo'ljallangan 30 Vt quvvatli sifatli payalnik (kavshar). Tez qiziydi va issiqlikni yaxshi ushlaydi. 'Ustalar tanlovi' toifasiga kiruvchi ishonchli va xavfsiz elektr asbob.",
+    price: 65000,
+    old_price: 85000,
+    discount: 23,
+    category_id: "cat-aksessuarlar", 
+    brand: "ADEGSO",
+    stock: 90,
+    sku: "ADG-40221",
+    rating: 4.8,
+    reviews_count: 15,
+    image: "/products/adegso_soldering_40221.png",
+    images: [],
+    specifications: {
+      "Quvvati": "30 Vt (Watt)",
+      "Turi": "Elektr payalnik (Soldering iron)",
+      "Qo'llanilishi": "Elektronika ta'mirlash",
+      "Model": "AD-40221"
+    },
+    mechanism: "Elektr asbob",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:30:00.000Z",
+    updated_at: "2025-01-26T11:30:00.000Z",
   }
 ];
 
