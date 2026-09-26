@@ -432,6 +432,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:10:00.000Z",
     updated_at: "2025-01-26T11:10:00.000Z",
+  },
+  {
+    id: "p-rur-r3038",
+    name: "RUR R3038 Krokodil (Sozlanuvchi Ploskogubsi)",
+    slug: "rur-r3038-krokodil",
+    description: "RUR (Model: R3038) — yuqori sifatli 'Krokodil' (sozlanuvchi ploskogubsi / water pump pliers). Santexnika ishlari va trubalarni qisish uchun juda qulay. Qattiq qotishmali jag'lari va sirpanmaydigan ko'k-kulrang tutqichlari bilan ishonchli ushlashni ta'minlaydi. Turli o'lchamlarga moslashish uchun ko'p pog'onali mexanizmga ega.",
+    price: 65000,
+    old_price: 85000,
+    discount: 23,
+    category_id: "cat-aksessuarlar", 
+    brand: "RUR",
+    stock: 75,
+    sku: "RUR-R3038",
+    rating: 5.0,
+    reviews_count: 16,
+    image: "/products/rur_krokodil_r3038.png",
+    images: [],
+    specifications: {
+      "Turi": "Sozlanuvchi qisqich (Krokodil)",
+      "Qo'llanilishi": "Santexnika va mexanika",
+      "Material": "Yuqori chidamli qotishma po'lat",
+      "Model": "R3038"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:15:00.000Z",
+    updated_at: "2025-01-26T11:15:00.000Z",
   }
 ];
 
