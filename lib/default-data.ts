@@ -658,6 +658,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:50:00.000Z",
     updated_at: "2025-01-26T11:50:00.000Z",
+  },
+  {
+    id: "p-biyoti-gloves-12001",
+    name: "BIYOTI BYT-12001 Himoya Perchatkasi (Ishchi Qo'lqop)",
+    slug: "biyoti-byt12001-perchatka",
+    description: "BIYOTI (Model: BYT-12001) — qurilish va ta'mirlash ishlari uchun mo'ljallangan yuqori sifatli himoya qo'lqopi (perchatka). Kaft qismi maxsus sirpanmaydigan ko'k qoplama (rezina/lateks) bilan ishlangan bo'lib, asboblarni mustahkam ushlash imkonini beradi. O'lchami: 10/XL.",
+    price: 8000,
+    old_price: 12000,
+    discount: 33,
+    category_id: "cat-aksessuarlar", 
+    brand: "BIYOTI",
+    stock: 500,
+    sku: "BYT-12001",
+    rating: 4.9,
+    reviews_count: 55,
+    image: "/products/biyoti_gloves_12001.png",
+    images: [],
+    specifications: {
+      "O'lchami": "10 / XL",
+      "Turi": "Himoya ishchi qo'lqopi",
+      "Material": "Mato va sirpanmaydigan qoplama",
+      "Model": "BYT-12001"
+    },
+    mechanism: "Aksessuar",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:55:00.000Z",
+    updated_at: "2025-01-26T11:55:00.000Z",
   }
 ];
 
