@@ -488,6 +488,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:20:00.000Z",
     updated_at: "2025-01-26T11:20:00.000Z",
+  },
+  {
+    id: "p-rur-r2344",
+    name: "RUR R2344 Kabel Tozalagich (Wire Stripper)",
+    slug: "rur-r2344-kabel-tozalagich",
+    description: "RUR (Model: R2344) — sim va kabellarni tez va aniq tozalash uchun mo'ljallangan qulay asbob. Simning turli diametrlariga moslashtirilgan o'yiqlari yordamida ishlash juda oson. O'tkir po'lat pichog'i va rezinali qulay tutqichi bilan ajralib turadi.",
+    price: 45000,
+    old_price: 60000,
+    discount: 25,
+    category_id: "cat-aksessuarlar", 
+    brand: "RUR",
+    stock: 120,
+    sku: "RUR-R2344",
+    rating: 4.8,
+    reviews_count: 19,
+    image: "/products/rur_stripper_r2344.png",
+    images: [],
+    specifications: {
+      "Turi": "Kabel tozalagich (Wire Stripper)",
+      "Qo'llanilishi": "Sim izolyatsiyasini tozalash",
+      "Model": "R2344",
+      "Material": "Maxsus ishlov berilgan po'lat"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:25:00.000Z",
+    updated_at: "2025-01-26T11:25:00.000Z",
   }
 ];
 
