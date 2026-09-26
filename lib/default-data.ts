@@ -798,6 +798,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T12:15:00.000Z",
     updated_at: "2025-01-26T12:15:00.000Z",
+  },
+  {
+    id: "p-ockean-laser-meter-100m",
+    name: "OCKEAN Lazerli O'lchov Masofasi (Lazerniy Metr) 100M",
+    slug: "ockean-lazer-metr-100m",
+    description: "OCKEAN — professional lazerli masofa o'lchagich (lazerniy metr / ruletka). 100 metrgacha bo'lgan masofani aniq va tez o'lchab beradi. Maydon, hajm va Pifagor teoremasi bo'yicha hisoblash funksiyalariga ega. Katta LCD displey va suv/changdan himoyalangan korpus.",
+    price: 360000,
+    old_price: 450000,
+    discount: 20,
+    category_id: "cat-lazer-olchov", 
+    brand: "OCKEAN",
+    stock: 50,
+    sku: "OCK-LASER-100",
+    rating: 4.9,
+    reviews_count: 18,
+    image: "/products/ockean_laser_meter_100m.png",
+    images: [],
+    specifications: {
+      "O'lchov masofasi": "100 metr",
+      "Turi": "Lazerli masofa o'lchagich (Lazerniy ruletka)",
+      "Ekran": "Raqamli LCD",
+      "Qo'shimcha funksiyalar": "Maydon (kvadrat), Hajm (kub) hisoblash"
+    },
+    mechanism: "Elektron",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T12:20:00.000Z",
+    updated_at: "2025-01-26T12:20:00.000Z",
   }
 ];
 
