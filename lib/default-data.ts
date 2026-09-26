@@ -686,6 +686,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:55:00.000Z",
     updated_at: "2025-01-26T11:55:00.000Z",
+  },
+  {
+    id: "p-biyoti-chainsaw-nasadka-6",
+    name: "BIYOTI 6\" Drel uchun Arra Nasadka (Mini Chainsaw Attachment)",
+    slug: "biyoti-drel-arra-nasadka-6",
+    description: "BIYOTI 6 dyuymli zanjirli arra nasadkasi. Ushbu nasadka yordamida oddiy drel yoki shurupovyortni kichik zanjirli arraga aylantirish mumkin. Daraxt shoxlarini kesish, o'tin tayyorlash va bog' ishlari uchun juda qulay va ixcham yechim. 'Strong Power' dizayni barqaror ishlashni ta'minlaydi.",
+    price: 65000,
+    old_price: 85000,
+    discount: 23,
+    category_id: "cat-aksessuarlar", 
+    brand: "BIYOTI",
+    stock: 85,
+    sku: "BYT-CHAIN-6",
+    rating: 4.8,
+    reviews_count: 36,
+    image: "/products/biyoti_chainsaw_attachment_6.png",
+    images: [],
+    specifications: {
+      "O'lchami": "6 dyuym (6\")",
+      "Turi": "Drel uchun arra nasadka (Attachment)",
+      "Mosligi": "Har qanday drel va shurupovyort",
+      "Vazifasi": "Yog'och va shoxlarni kesish"
+    },
+    mechanism: "Nasadka",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T12:00:00.000Z",
+    updated_at: "2025-01-26T12:00:00.000Z",
   }
 ];
 
