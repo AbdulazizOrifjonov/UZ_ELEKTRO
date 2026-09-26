@@ -630,6 +630,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:45:00.000Z",
     updated_at: "2025-01-26T11:45:00.000Z",
+  },
+  {
+    id: "p-biyoti-shtroborez-multi",
+    name: "BIYOTI Ko'p diskli Devor Kesuvchi (Multi-disk Shtroborez)",
+    slug: "biyoti-multidisk-shtroborez",
+    description: "BIYOTI — bir vaqtning o'zida bir nechta olmosli disklar (multi-disk) yordamida ishlaydigan og'ir va professional devor kesuvchi (shtroborez). Keng va chuqur ariqchalarni (shtroba) bir urishda ochish uchun mo'ljallangan. Beton va g'ishtni tez maydalaydi, chang chiqarmaslik uchun maxsus himoya qoplamiga ega.",
+    price: 1600000,
+    old_price: 1850000,
+    discount: 13,
+    category_id: "cat-bolgarkalar", 
+    brand: "BIYOTI",
+    stock: 8,
+    sku: "BYT-SHTR-MULTI",
+    rating: 5.0,
+    reviews_count: 12,
+    image: "/products/biyoti_multidisk_shtroborez.png",
+    images: [],
+    specifications: {
+      "Disklar soni": "Ko'p diskli (Multi-disk)",
+      "Turi": "Professional shtroborez (Devor kesuvchi)",
+      "Vazifasi": "Betonda chuqur va keng ariqcha ochish",
+      "Sifat": "Sanoat darajasi"
+    },
+    mechanism: "Elektr asbob",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:50:00.000Z",
+    updated_at: "2025-01-26T11:50:00.000Z",
   }
 ];
 
