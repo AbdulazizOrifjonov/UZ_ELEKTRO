@@ -854,6 +854,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T12:25:00.000Z",
     updated_at: "2025-01-26T12:25:00.000Z",
+  },
+  {
+    id: "p-ockean-ph2-otvertka",
+    name: "OCKEAN PH2 S2 Krestli Otvyortka",
+    slug: "ockean-ph2-s2-otvyortka",
+    description: "OCKEAN markali yuqori sifatli (S2 po'lat) krestli (PH2) otvyortka. Uy, avtomobil va elektronika ta'mirlash ishlari uchun ideal. Ergonomik ikki komponentli (rezina va plastik) tutqichi qo'lda juda qulay yotadi va sirpanmaydi. Magnitli uchga ega.",
+    price: 25000,
+    old_price: 32000,
+    discount: 21,
+    category_id: "cat-aksessuarlar", 
+    brand: "OCKEAN",
+    stock: 300,
+    sku: "OCK-PH2-S2",
+    rating: 4.9,
+    reviews_count: 41,
+    image: "/products/ockean_ph2_otvertka.jpg",
+    images: [],
+    specifications: {
+      "Turi": "Krestli (Phillips) otvyortka",
+      "O'lchami": "PH2",
+      "Material": "S2 Sanoat po'lati",
+      "Xususiyati": "Magnitli uch va sirpanmas tutqich"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T12:30:00.000Z",
+    updated_at: "2025-01-26T12:30:00.000Z",
   }
 ];
 
