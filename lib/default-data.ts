@@ -320,6 +320,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T10:50:00.000Z",
     updated_at: "2025-01-26T10:50:00.000Z",
+  },
+  {
+    id: "p-roma-ht535",
+    name: "ROMA TOOLS HT-535 Qurilish Quloqchini (Naushnik)",
+    slug: "roma-tools-ht535-qurilish-quloqchini",
+    description: "ROMA TOOLS (Model: HT-535) — baland shovqinli qurilish, ta'mirlash va ishlab chiqarish sexlarida ishlash uchun mo'ljallangan himoya quloqchini. Quloqni mukammal yopib turuvchi yumshoq yostiqchalari va boshga moslab sozlanuvchi qulay yoyi (dujkasi) bor. Eshitish qobiliyatini asrash uchun muhim himoya vositasi.",
+    price: 35000,
+    old_price: 45000,
+    discount: 22,
+    category_id: "cat-aksessuarlar", 
+    brand: "ROMA TOOLS",
+    stock: 200,
+    sku: "RMA-HT535",
+    rating: 5.0,
+    reviews_count: 34,
+    image: "/products/roma_ht535.png",
+    images: [],
+    specifications: {
+      "Turi": "Qurilish himoya quloqchini (Shumoizolyatsiya)",
+      "Model": "HT-535",
+      "Xususiyati": "Sozlanuvchi yoy, yumshoq yostiqchalar",
+      "Vazifasi": "Baland shovqindan himoya qilish"
+    },
+    mechanism: "Himoya vositasi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T10:55:00.000Z",
+    updated_at: "2025-01-26T10:55:00.000Z",
   }
 ];
 
