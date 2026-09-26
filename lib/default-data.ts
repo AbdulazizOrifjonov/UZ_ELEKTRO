@@ -573,6 +573,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:35:00.000Z",
     updated_at: "2025-01-26T11:35:00.000Z",
+  },
+  {
+    id: "p-biyoti-battery-16-8v",
+    name: "BIYOTI 16.8V Li-ION Akkumulyator (Battery Pack)",
+    slug: "biyoti-16-8v-li-ion-akkumulyator",
+    description: "BIYOTI — 16.8V kuchlanishli litiy-ion (Li-ION) akkumulyator blok. BIYOTI brendining shurupovyortlari va boshqa simsiz asboblari uchun maxsus (Power Share) mo'ljallangan. 100% original, uzoq muddat xizmat qiladi va tez quvvat oladi.",
+    price: 65000,
+    old_price: 85000,
+    discount: 23,
+    category_id: "cat-aksessuarlar", 
+    brand: "BIYOTI",
+    stock: 200,
+    sku: "BYT-BAT-168V",
+    rating: 4.8,
+    reviews_count: 42,
+    image: "/products/biyoti_battery_16v.png",
+    images: [],
+    specifications: {
+      "Turi": "Li-ION Akkumulyator",
+      "Kuchlanish": "16.8V",
+      "Mosligi": "BIYOTI asboblari uchun",
+      "Sifat": "100% Original"
+    },
+    mechanism: "Akkumulyator",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:40:00.000Z",
+    updated_at: "2025-01-26T11:40:00.000Z",
   }
 ];
 
