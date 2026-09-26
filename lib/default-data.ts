@@ -460,6 +460,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T11:15:00.000Z",
     updated_at: "2025-01-26T11:15:00.000Z",
+  },
+  {
+    id: "p-rur-r3049",
+    name: "RUR R3049 Kabel Tozalagich (Stripping Crimping Pliers)",
+    slug: "rur-r3049-kabel-tozalagich",
+    description: "RUR (Model: R3049) — elektr simlari va kabellarni izolyatsiyasidan tozalash hamda siqish (krimpovka) uchun mo'ljallangan maxsus asbob. Elektriklar uchun juda zarur bo'lgan bu asbob simning ichiga shikast yetkazmasdan sirtini tozalaydi. Sirpanmaydigan qulay tutqichga ega.",
+    price: 85000,
+    old_price: 110000,
+    discount: 22,
+    category_id: "cat-aksessuarlar", 
+    brand: "RUR",
+    stock: 85,
+    sku: "RUR-R3049",
+    rating: 4.9,
+    reviews_count: 24,
+    image: "/products/rur_stripper_r3049.png",
+    images: [],
+    specifications: {
+      "Turi": "Kabel tozalagich va siquvchi (Stripper)",
+      "Qo'llanilishi": "Elektromontaj, simlarni tozalash",
+      "Material": "Yuqori sifatli po'lat",
+      "Model": "R3049"
+    },
+    mechanism: "Qo'l asbobi",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T11:20:00.000Z",
+    updated_at: "2025-01-26T11:20:00.000Z",
   }
 ];
 
