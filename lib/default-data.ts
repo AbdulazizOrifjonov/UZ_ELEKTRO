@@ -610,6 +610,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T10:15:00.000Z",
     updated_at: "2025-01-26T10:15:00.000Z",
+  },
+  {
+    id: "p-adegso-knife-10289",
+    name: "ADEGSO 10289 Kantselyariya/Oboy pichog'i",
+    slug: "adegso-oboy-pichogi-10289",
+    description: "ADEGSO (Model: 10289) — qog'oz, karton, oboy va boshqa materiallarni kesish uchun mo'ljallangan yuqori sifatli 'ustalar tanlovi' pichog'i. Pichoqning uchini sindirib, doimiy o'tkir holatda ishlatish mumkin (Snap-off blade). Korpusi qulay ushlash uchun maxsus teksturali dizaynga ega.",
+    price: 10000,
+    old_price: 15000,
+    discount: 33,
+    category_id: "cat-aksessuarlar", 
+    brand: "ADEGSO",
+    stock: 100,
+    sku: "ADG-10289",
+    rating: 4.9,
+    reviews_count: 8,
+    image: "/products/adegso_knife_10289.png",
+    images: [],
+    specifications: {
+      "Pichoq turi": "Sindirib yangilanadigan (Snap-off)",
+      "Vazifasi": "Oboy, qog'oz, karton kesish",
+      "Korpus materiali": "Qattiq plastmassa + rezina qo'shimchalar",
+      "Model": "10289"
+    },
+    mechanism: "Mexanik",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T10:20:00.000Z",
+    updated_at: "2025-01-26T10:20:00.000Z",
   }
 ];
 
