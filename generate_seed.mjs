@@ -22,7 +22,10 @@ function escapeSql(str) {
   return str.toString().replace(/'/g, "''");
 }
 
-let sql = '-- UZO ELEKTRO MARKET SEED DATA (Final Fix)\n\n';
+let sql = '-- UZO ELEKTRO MARKET SEED DATA (Clean User Data)\n\n';
+
+sql += 'DELETE FROM product_images;\n';
+sql += 'DELETE FROM products;\n';
 
 if (mC) {
   const cats = eval(mC[1]);
