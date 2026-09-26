@@ -770,6 +770,34 @@ export const DEFAULT_PRODUCTS: Product[] = [
     is_new: true,
     created_at: "2025-01-26T12:10:00.000Z",
     updated_at: "2025-01-26T12:10:00.000Z",
+  },
+  {
+    id: "p-ockean-ruletka-5m",
+    name: "OCKEAN 5 metrli O'lchov Tasmasi (Ruletka)",
+    slug: "ockean-5m-ruletka",
+    description: "OCKEAN Quality Tools — zamonaviy shaffof korpusli 5 metrli o'lchov tasmasi (ruletka). Lentasining qalinligi 19mm, ixcham dizayn (Labor saving 50%) va qulay qulflash (Lock) tugmasiga ega. Usta va quruvchilar uchun mustahkam va aniq o'lchov vositasi.",
+    price: 27000,
+    old_price: 35000,
+    discount: 22,
+    category_id: "cat-lazer-olchov", 
+    brand: "OCKEAN",
+    stock: 120,
+    sku: "OCK-RUL-5M",
+    rating: 4.8,
+    reviews_count: 24,
+    image: "/products/ockean_ruletka_5m.jpg",
+    images: [],
+    specifications: {
+      "Uzunligi": "5 metr",
+      "Tasma kengligi": "19 mm",
+      "Korpus": "Shaffof (Transparent) plastik",
+      "Qulflash": "Fiksator tugmasi mavjud"
+    },
+    mechanism: "Mexanik",
+    is_active: true,
+    is_new: true,
+    created_at: "2025-01-26T12:15:00.000Z",
+    updated_at: "2025-01-26T12:15:00.000Z",
   }
 ];
 
