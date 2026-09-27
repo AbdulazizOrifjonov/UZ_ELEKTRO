@@ -253,8 +253,20 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   const addProduct = useCallback((p: Partial<Product>) => {
     const now = new Date().toISOString();
+    
+    // UUID v4 generator fallback agar crypto ishlamasa
+    const generateUUID = () => {
+      if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+    };
+    
+    const newId = generateUUID();
+
     const newProduct: Product = {
-      id: crypto.randomUUID?.() || uid("p"),
+      id: newId,
       name: p.name ?? "Nomsiz",
       slug: (p.name ?? "nomsiz").toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + Date.now().toString().slice(-4),
       description: p.description ?? "",
@@ -279,8 +291,32 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     };
     // Optimistic
     setProducts((prev) => [newProduct, ...prev]);
+    
+    // Supabase faqat bazada bor ustunlarni qabul qiladi.
+    const dbPayload = {
+      id: newProduct.id,
+      name: newProduct.name,
+      slug: newProduct.slug,
+      description: newProduct.description,
+      price: newProduct.price,
+      old_price: newProduct.old_price,
+      discount: newProduct.discount,
+      category_id: newProduct.category_id,
+      brand: newProduct.brand,
+      stock: newProduct.stock,
+      sku: newProduct.sku,
+      rating: newProduct.rating,
+      reviews_count: newProduct.reviews_count,
+      image: newProduct.image,
+      specifications: newProduct.specifications,
+      is_active: newProduct.is_active,
+      is_new: newProduct.is_new,
+      created_at: newProduct.created_at,
+      updated_at: newProduct.updated_at
+    };
+
     // Supabase
-    supabase.from('products').insert(newProduct).then(({ error }) => {
+    supabase.from('products').insert(dbPayload).then(({ error }) => {
       if (error) console.error("Error adding product:", error);
     });
     return newProduct;
@@ -288,7 +324,11 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   const updateProduct = useCallback((id: string, p: Partial<Product>) => {
     setProducts((prev) => prev.map((item) => (item.id === id ? { ...item, ...p, updated_at: new Date().toISOString() } : item)));
-    supabase.from('products').update({ ...p, updated_at: new Date().toISOString() }).eq('id', id).then(({ error }) => {
+    
+    // Remove invalid columns for Supabase
+    const { colors, images, mechanism, ...validPayload } = p as any;
+    
+    supabase.from('products').update({ ...validPayload, updated_at: new Date().toISOString() }).eq('id', id).then(({ error }) => {
       if (error) console.error("Error updating product:", error);
     });
   }, []);
