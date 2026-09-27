@@ -311,24 +311,26 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       specifications: newProduct.specifications,
       is_active: newProduct.is_active,
       is_new: newProduct.is_new,
-      created_at: newProduct.created_at,
-      updated_at: newProduct.updated_at
+      created_at: newProduct.created_at
     };
 
     // Supabase
     supabase.from('products').insert(dbPayload).then(({ error }) => {
-      if (error) console.error("Error adding product:", error);
+      if (error) {
+        console.error("Error adding product:", error);
+        alert("Saqlashda xatolik yuz berdi! Iltimos buni rasmga olib dasturchiga yuboring: " + JSON.stringify(error));
+      }
     });
     return newProduct;
   }, []);
 
   const updateProduct = useCallback((id: string, p: Partial<Product>) => {
-    setProducts((prev) => prev.map((item) => (item.id === id ? { ...item, ...p, updated_at: new Date().toISOString() } : item)));
+    setProducts((prev) => prev.map((item) => (item.id === id ? { ...item, ...p } : item)));
     
     // Remove invalid columns for Supabase
-    const { colors, images, mechanism, ...validPayload } = p as any;
+    const { colors, images, mechanism, updated_at, ...validPayload } = p as any;
     
-    supabase.from('products').update({ ...validPayload, updated_at: new Date().toISOString() }).eq('id', id).then(({ error }) => {
+    supabase.from('products').update({ ...validPayload }).eq('id', id).then(({ error }) => {
       if (error) console.error("Error updating product:", error);
     });
   }, []);
