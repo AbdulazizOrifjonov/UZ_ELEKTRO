@@ -356,37 +356,13 @@ export default function AdminProductsPage() {
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={editing ? "Mahsulotni tahrirlash" : "Yangi mahsulot qo'shish"} width="max-w-2xl">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-medium">Mahsulot rasmlari *</label>
+            <label className="mb-2 block text-sm font-medium">Mahsulot rasmi *</label>
             <div className="flex gap-4 overflow-x-auto pb-2 custom-scrollbar">
               <ImageUploader 
                 value={form.image} 
                 onChange={(v) => setForm((f) => ({ ...f, image: v }))} 
                 label="Asosiy" 
               />
-              {form.images.map((img, idx) => (
-                <ImageUploader 
-                  key={idx}
-                  value={img} 
-                  onChange={(v) => {
-                    setForm((f) => {
-                      const newImages = [...f.images];
-                      if (v) newImages[idx] = v;
-                      else newImages.splice(idx, 1);
-                      return { ...f, images: newImages };
-                    });
-                  }} 
-                  label={`Qo'shimcha ${idx + 1}`} 
-                />
-              ))}
-              {(form.image || form.images.length > 0) && (
-                <ImageUploader 
-                  value={null} 
-                  onChange={(v) => {
-                    if (v) setForm((f) => ({ ...f, images: [...f.images, v] }));
-                  }} 
-                  label="Yana qo'shish" 
-                />
-              )}
             </div>
           </div>
 

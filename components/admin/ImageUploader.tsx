@@ -18,7 +18,7 @@ export function ImageUploader({
   maxSize?: number;
 }) {
   return (
-    <div>
+    <div className="w-24 sm:w-32 shrink-0">
       <label className="mb-1 block text-sm font-medium">{label}</label>
       {value ? (
         <div className={`relative ${aspect} w-full max-w-[220px] overflow-hidden rounded-lg border border-navy-100`}>
