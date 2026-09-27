@@ -79,11 +79,27 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
           supabase.from("sliders").select("*").order("sort_order", { ascending: true }),
           supabase.from("orders").select("*").order("created_at", { ascending: false })
         ]);
-        // if (p && p.length > 0) setProducts(p);
-        // if (c && c.length > 0) setCategories(c);
-        // Xozircha (Supabase bazasidagi xatolar tufayli) to'g'ridan to'g'ri kod ichidan olamiz:
-        setProducts(DEFAULT_PRODUCTS);
-        setCategories(DEFAULT_CATEGORIES);
+
+        // Supabase bazasida qolib ketgan eski axlatlarni (DeWalt, Bosch, Makita, Crown, Resanta, Edon, Hilda) olib tashlaymiz
+        const dummyBrands = ["DeWalt", "Bosch", "Makita", "Crown", "Resanta", "Edon", "Hilda"];
+        
+        const validSupabaseProducts = p ? p.filter((prod: Product) => !dummyBrands.includes(prod.brand)) : [];
+        const mergedProducts = [...DEFAULT_PRODUCTS];
+        for (const sp of validSupabaseProducts) {
+          const idx = mergedProducts.findIndex((x) => x.id === sp.id);
+          if (idx >= 0) mergedProducts[idx] = sp; // update with DB version
+          else mergedProducts.unshift(sp); // new product from admin panel
+        }
+        setProducts(mergedProducts);
+
+        const validSupabaseCategories = c ? c.filter((cat: Category) => cat.id !== "dummy-id") : [];
+        const mergedCategories = [...DEFAULT_CATEGORIES];
+        for (const sc of validSupabaseCategories) {
+          const idx = mergedCategories.findIndex((x) => x.id === sc.id);
+          if (idx >= 0) mergedCategories[idx] = sc;
+          else mergedCategories.unshift(sc);
+        }
+        setCategories(mergedCategories);
 
         if (s && s.length > 0) {
           const promoConfig = s.find((item) => item.id === "system_promocodes");

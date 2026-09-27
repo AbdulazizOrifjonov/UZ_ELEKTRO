@@ -1,7 +1,4 @@
 export function formatSom(value: number): string {
-  if (value < 100000) {
-    return "$" + new Intl.NumberFormat("ru-RU").format(Math.round(value));
-  }
   return new Intl.NumberFormat("ru-RU").format(Math.round(value)) + " so'm";
 }
 
