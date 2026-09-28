@@ -308,6 +308,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       rating: newProduct.rating,
       reviews_count: newProduct.reviews_count,
       image: newProduct.image,
+      images: newProduct.images,
       specifications: newProduct.specifications,
       is_active: newProduct.is_active,
       is_new: newProduct.is_new,
@@ -328,7 +329,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     setProducts((prev) => prev.map((item) => (item.id === id ? { ...item, ...p } : item)));
     
     // Remove invalid columns for Supabase
-    const { colors, images, mechanism, updated_at, ...validPayload } = p as any;
+    const { colors, mechanism, updated_at, ...validPayload } = p as any;
     
     supabase.from('products').update({ ...validPayload }).eq('id', id).then(({ error }) => {
       if (error) console.error("Error updating product:", error);
