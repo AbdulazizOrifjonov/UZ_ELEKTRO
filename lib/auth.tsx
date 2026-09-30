@@ -310,11 +310,32 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       if (existing) {
-        return {
-          ok: false,
-          error: "Ushbu telefon raqam allaqachon ro'yxatdan o'tgan! Iltimos, 'Kirish' bo'limidan hisobingizga kiring.",
-          alreadyRegistered: true,
+        // Agar ro'yxatdan o'tgan bo'lsa, xato bermaymiz. Yangi ism va parolni ustidan yozib yuboramiz (Upsert)
+        const updateData = { full_name: cleanName, password: userPassword };
+        try {
+          await supabase.from("app_users").update(updateData).eq("id", existing.id);
+        } catch {}
+
+        const localUsers = getLocalUsers();
+        if (localUsers[existing.id]) {
+          localUsers[existing.id].full_name = cleanName;
+          localUsers[existing.id].password = userPassword;
+          localStorage.setItem(LOCAL_USERS_KEY, JSON.stringify(localUsers));
+        }
+
+        const userData: AppUser = {
+          id: existing.id,
+          fullName: cleanName,
+          phone: existing.phone,
+          role: existing.role,
+          createdAt: existing.created_at || new Date().toISOString(),
+          profileImage: existing.profile_image,
+          address: existing.address
         };
+
+        setUser(userData);
+        localStorage.setItem(SESSION_KEY, existing.id);
+        return { ok: true, isAdmin: isSuper };
       }
 
       const assignedRole = isSuper ? "super_admin" : "user";
@@ -407,6 +428,7 @@ export function useAuth() {
   if (!ctx) throw new Error("useAuth must be used inside AuthProvider");
   return ctx;
 }
+
 
 
 
