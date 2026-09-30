@@ -305,18 +305,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } catch {}
 
       if (!existing) {
+        const localUser = findLocalUserByPhone(cleanPhone);
+        if (localUser) existing = localUser;
+      }
+
+      if (existing) {
         return {
           ok: false,
-          error: "Ushbu telefon raqam ro'yxatdan o'tmagan! Iltimos, 'Ro'yxatdan o'tish' bo'limi orqali hisob oching.",
-          notRegistered: true,
+          error: "Ushbu telefon raqam allaqachon ro'yxatdan o'tgan! Iltimos, 'Kirish' bo'limidan hisobingizga kiring.",
+          alreadyRegistered: true,
         };
       }
 
-      if (existing.password && existing.password !== password) {
-        return {
-          ok: false,
-          error: "Parol noto'g'ri kiritildi!",
-        };
+      const assignedRole = isSuper ? "super_admin" : "user";
+      const cleanName = fullName.trim() || (isSuper ? "Admin" : "Foydalanuvchi");
+      const userPassword = password?.trim() || "";
+
+      let newUser: any = null;
+      try {
+        const { data, error: insertError } = await supabase.from("app_users").insert({
+            full_name: cleanName,
+            phone: cleanPhone,
+            role: assignedRole,
+            password: userPassword,
+          }).select().single();
+        if (!insertError && data) newUser = data;
+      } catch {}
+
+      if (!newUser) {
+        const now = new Date().toISOString();
+        const userId = crypto.randomUUID?.() || `user_${Date.now()}`;
+        newUser = { id: userId, full_name: cleanName, phone: cleanPhone, role: assignedRole, password: userPassword, created_at: now };
+        saveLocalUser(newUser);
       }
 
       const userData: AppUser = {
@@ -387,6 +407,7 @@ export function useAuth() {
   if (!ctx) throw new Error("useAuth must be used inside AuthProvider");
   return ctx;
 }
+
 
 
 
