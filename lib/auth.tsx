@@ -309,6 +309,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (localUser) existing = localUser;
       }
 
+      const assignedRole = isSuper ? "super_admin" : "user";
+      const cleanName = fullName.trim() || (isSuper ? "Admin" : "Foydalanuvchi");
+      const userPassword = password?.trim() || "";
+
       if (existing) {
         // Agar ro'yxatdan o'tgan bo'lsa, xato bermaymiz. Yangi ism va parolni ustidan yozib yuboramiz (Upsert)
         const updateData = { full_name: cleanName, password: userPassword };
@@ -337,10 +341,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem(SESSION_KEY, existing.id);
         return { ok: true, isAdmin: isSuper };
       }
-
-      const assignedRole = isSuper ? "super_admin" : "user";
-      const cleanName = fullName.trim() || (isSuper ? "Admin" : "Foydalanuvchi");
-      const userPassword = password?.trim() || "";
 
       let newUser: any = null;
       try {
@@ -428,6 +428,7 @@ export function useAuth() {
   if (!ctx) throw new Error("useAuth must be used inside AuthProvider");
   return ctx;
 }
+
 
 
 

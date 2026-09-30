@@ -83,7 +83,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         // Supabase bazasida qolib ketgan eski axlatlarni (DeWalt, Bosch, Makita, Crown, Resanta, Edon, Hilda) olib tashlaymiz
         const dummyBrands = ["DeWalt", "Bosch", "Makita", "Crown", "Resanta", "Edon", "Hilda"];
         
-        const validSupabaseProducts = p ? p.filter((prod: Product) => !dummyBrands.includes(prod.brand)) : [];
+        const validSupabaseProducts = p ? p.filter((prod: Product) => !dummyBrands.includes(prod.brand || "")) : [];
         const mergedProducts = [...DEFAULT_PRODUCTS];
         for (const sp of validSupabaseProducts) {
           const idx = mergedProducts.findIndex((x) => x.id === sp.id);
@@ -649,3 +649,4 @@ export async function fileToDataUrl(file: File, maxSize: number = 800, quality: 
     reader.readAsDataURL(file);
   });
 }
+
