@@ -73,7 +73,8 @@ interface AuthValue {
   ) => Promise<{ ok: boolean; error?: string; isAdmin?: boolean; notRegistered?: boolean }>;
   signup: (
     fullName: string,
-    phone: string
+    phone: string,
+    password?: string
   ) => Promise<{ ok: boolean; error?: string; isAdmin?: boolean; alreadyRegistered?: boolean }>;
   logout: () => void;
   updateProfile: (data: Partial<AppUser>) => Promise<void>;
@@ -121,17 +122,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
           const { data, error } = await supabase.from("app_users").select("*").eq("id", sessionId).single();
           if (data && !error) {
-            setUser({ id: data.id, fullName: data.full_name, phone: data.phone, role: data.role, createdAt: data.created_at });
+            setUser({ id: data.id, fullName: data.full_name, phone: data.phone, role: data.role, createdAt: data.created_at, profileImage: data.profile_image, address: data.address });
             found = true;
           }
         } catch {}
         // localStorage fallback
         if (!found) {
-          const localUser = findLocalUserById(sessionId);
-          if (localUser) {
-            setUser({ id: localUser.id, fullName: localUser.full_name, phone: localUser.phone, role: localUser.role, createdAt: localUser.created_at });
-          } else {
-            localStorage.removeItem(SESSION_KEY);
+          const local = findLocalUserById(sessionId);
+          if (local) {
+            setUser({ id: local.id, fullName: local.full_name, phone: local.phone, role: local.role, createdAt: local.created_at, profileImage: local.profile_image, address: local.address });
           }
         }
       }
@@ -188,7 +187,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             fullName: adminName,
             phone: existing.phone,
             role: "super_admin",
-            createdAt: existing.created_at,
+            createdAt: existing.created_at, profileImage: existing.profile_image, address: existing.address,
           };
           await supabase
             .from("app_users")
@@ -238,7 +237,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           fullName: adminName,
           phone: cleanPhone,
           role: "super_admin",
-          createdAt: localExisting?.created_at || now,
+          createdAt: localExisting?.created_at || now, profileImage: localExisting?.profile_image, address: localExisting?.address,
         };
         saveLocalUser({ id: userId, full_name: adminName, phone: cleanPhone, role: "super_admin", created_at: userData.createdAt });
         setUser(userData);
@@ -272,12 +271,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         };
       }
 
+      if (existing.password && existing.password !== password) {
+        return {
+          ok: false,
+          error: "Parol noto'g'ri kiritildi!",
+        };
+      }
+
       const userData: AppUser = {
         id: existing.id,
         fullName: existing.full_name,
         phone: existing.phone,
         role: existing.role,
-        createdAt: existing.created_at,
+        createdAt: existing.created_at, profileImage: existing.profile_image, address: existing.address,
       };
 
       setUser(userData);
@@ -288,59 +294,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const signup = useCallback(
-    async (fullName: string, phone: string) => {
+    async (fullName: string, phone: string, password?: string) => {
       const cleanPhone = normalizePhone(phone);
       const isSuper = isSuperAdminPhone(cleanPhone);
 
-      // Telefon raqam oldin ro'yxatdan o'tganligini tekshirish
       let existing: any = null;
       try {
-        const { data } = await supabase
-          .from("app_users")
-          .select("id, phone, role")
-          .eq("phone", cleanPhone)
-          .maybeSingle();
+        const { data } = await supabase.from("app_users").select("*").eq("phone", cleanPhone).maybeSingle();
         if (data) existing = data;
       } catch {}
 
-      // localStorage fallback tekshirish
       if (!existing) {
-        const localUser = findLocalUserByPhone(cleanPhone);
-        if (localUser) existing = localUser;
-      }
-
-      if (existing) {
         return {
           ok: false,
-          error: "Ushbu telefon raqam allaqachon ro'yxatdan o'tgan! Iltimos, 'Kirish' bo'limidan hisobingizga kiring.",
-          alreadyRegistered: true,
+          error: "Ushbu telefon raqam ro'yxatdan o'tmagan! Iltimos, 'Ro'yxatdan o'tish' bo'limi orqali hisob oching.",
+          notRegistered: true,
         };
       }
 
-      const assignedRole = isSuper ? "super_admin" : "user";
-      const cleanName = fullName.trim() || (isSuper ? "Admin" : "Foydalanuvchi");
-
-      // Supabase orqali yaratish
-      let newUser: any = null;
-      try {
-        const { data, error: insertError } = await supabase
-          .from("app_users")
-          .insert({
-            full_name: cleanName,
-            phone: cleanPhone,
-            role: assignedRole,
-          })
-          .select()
-          .single();
-        if (!insertError && data) newUser = data;
-      } catch {}
-
-      // Supabase ishlamasa — localStorage fallback
-      if (!newUser) {
-        const now = new Date().toISOString();
-        const userId = crypto.randomUUID?.() || `user_${Date.now()}`;
-        newUser = { id: userId, full_name: cleanName, phone: cleanPhone, role: assignedRole, created_at: now };
-        saveLocalUser(newUser);
+      if (existing.password && existing.password !== password) {
+        return {
+          ok: false,
+          error: "Parol noto'g'ri kiritildi!",
+        };
       }
 
       const userData: AppUser = {
@@ -353,7 +329,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       setUser(userData);
       localStorage.setItem(SESSION_KEY, userData.id);
-      saveLocalUser({ id: newUser.id, full_name: cleanName, phone: cleanPhone, role: assignedRole, created_at: newUser.created_at });
+      saveLocalUser(newUser);
       return { ok: true, isAdmin: isSuper };
     },
     [supabase]
@@ -365,12 +341,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const updateProfile = useCallback(async (data: Partial<AppUser>) => {
-    setUser((prev) => { if (!prev) return prev; return { ...prev, ...data }; });
+    setUser((prev) => {
+      if (!prev) return prev;
+      const updatedUser = { ...prev, ...data };
+      
+      // LocalStorage ni ham yangilash (shunda rasmlar o'chib ketmaydi)
+      const localUsers = getLocalUsers();
+      if (localUsers[updatedUser.id]) {
+        localUsers[updatedUser.id].full_name = updatedUser.fullName;
+        localUsers[updatedUser.id].phone = updatedUser.phone;
+        localUsers[updatedUser.id].profile_image = updatedUser.profileImage;
+        localUsers[updatedUser.id].address = updatedUser.address;
+        localStorage.setItem(LOCAL_USERS_KEY, JSON.stringify(localUsers));
+      }
+
+      return updatedUser;
+    });
+
     if (user?.id) {
       const updateData: any = {};
-      if (data.fullName) updateData.full_name = data.fullName;
-      if (data.phone) updateData.phone = data.phone;
-      if (Object.keys(updateData).length > 0) await supabase.from("app_users").update(updateData).eq("id", user.id);
+      if (data.fullName !== undefined) updateData.full_name = data.fullName;
+      if (data.phone !== undefined) updateData.phone = data.phone;
+      if (data.profileImage !== undefined) updateData.profile_image = data.profileImage;
+      if (data.address !== undefined) updateData.address = data.address;
+      
+      try {
+        if (Object.keys(updateData).length > 0) {
+          await supabase.from("app_users").update(updateData).eq("id", user.id);
+        }
+      } catch (e) {}
     }
   }, [user, supabase]);
 
@@ -388,3 +387,8 @@ export function useAuth() {
   if (!ctx) throw new Error("useAuth must be used inside AuthProvider");
   return ctx;
 }
+
+
+
+
+

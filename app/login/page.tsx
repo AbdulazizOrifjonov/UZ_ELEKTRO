@@ -41,18 +41,14 @@ function AuthForm() {
     setLoading(true);
 
     if (mode === "login") {
-      // 1. KIRISH (LOGIN) - Admin bo'lsa parol talab qilinadi
-      if (isAdminPhoneDetected && !password.trim()) {
-        setError("Iltimos, admin parolini kiriting.");
+      // 1. KIRISH (LOGIN) - Hamma uchun parol talab qilinadi
+      if (!password.trim()) {
+        setError("Iltimos, parolingizni kiriting.");
         setLoading(false);
         return;
       }
 
-      const res = await login(
-        cleanPhone,
-        isAdminPhoneDetected ? password : "",
-        isAdminPhoneDetected ? (fullName || "Admin") : fullName
-      );
+      const res = await login(cleanPhone, password, fullName);
       setLoading(false);
 
       if (!res.ok) {
@@ -76,7 +72,13 @@ function AuthForm() {
         return;
       }
 
-      const res = await signup(fullName, cleanPhone);
+      if (!password.trim()) {
+        setError("Iltimos, parolingizni kiriting.");
+        setLoading(false);
+        return;
+      }
+
+      const res = await signup(fullName, cleanPhone, password);
       setLoading(false);
 
       if (!res.ok) {
@@ -178,6 +180,7 @@ function AuthForm() {
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
+                autoComplete="name"
                 className="w-full rounded-xl border border-navy-200/80 bg-white px-3.5 py-2.5 text-sm font-medium text-navy-950 outline-none focus:border-navy-900 focus:ring-2 focus:ring-navy-900/10 transition"
                 placeholder="Ism va familiyangizni kiriting"
               />
@@ -210,35 +213,43 @@ function AuthForm() {
               }}
               className="w-full rounded-xl border border-navy-200/80 bg-white px-3.5 py-2.5 text-sm font-medium text-navy-950 outline-none focus:border-navy-900 focus:ring-2 focus:ring-navy-900/10 transition"
               placeholder="+998 -- --- -- --"
+              autoComplete="username"
             />
           </div>
 
-          {/* Admin Parol maydoni (Faqat admin raqam kiritilganda chiqadi) */}
-          {isAdminPhoneDetected && (
-            <div className="animate-in fade-in duration-200">
-              <label className="mb-1 block text-xs font-semibold text-navy-900">
-                Admin paroli <span className="text-danger">*</span>
-              </label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-xl border border-amber-300 bg-amber-50/20 px-3.5 py-2.5 text-sm font-medium text-navy-950 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-400/20 pr-10 transition"
-                  placeholder="Parolni kiriting"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-navy-900/40 hover:text-navy-900 transition cursor-pointer"
-                  tabIndex={-1}
-                >
-                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                </button>
-              </div>
+          {/* Parol maydoni (Hamma uchun) */}
+          <div className="animate-in fade-in duration-200">
+            <label className="mb-1 block text-xs font-semibold text-navy-900">
+              Parol <span className="text-danger">*</span>
+            </label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete={mode === "login" ? "current-password" : "new-password"}
+                className={cn(
+                  "w-full rounded-xl border border-navy-200/80 bg-white px-3.5 py-2.5 text-sm font-medium text-navy-950 outline-none focus:border-navy-900 focus:ring-2 focus:ring-navy-900/10 pr-10 transition",
+                  isAdminPhoneDetected && "border-amber-300 bg-amber-50/20 focus:border-amber-500 focus:ring-amber-400/20"
+                )}
+                placeholder="Parolingizni kiriting"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-navy-900/40 hover:text-navy-900 transition cursor-pointer"
+                tabIndex={-1}
+              >
+                {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+              </button>
             </div>
-          )}
+            {mode === "signup" && (
+              <p className="mt-1.5 text-[11px] text-navy-900/60 leading-tight">
+                <strong>Eslatma:</strong> Bu parolni eslab qoling. Boshqa qurilmalardan (telefon, kompyuter) o'z hisobingizga kirish uchun xuddi shu parol va telefon raqamingizdan foydalanasiz.
+              </p>
+            )}
+          </div>
 
           {/* Xatolik xabari */}
           {error && (
