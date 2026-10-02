@@ -444,9 +444,14 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     const dbRow = {
       id: orderId,
       order_number: orderNumber,
+      user_id: newOrder.user_id || null,
       customer_name: newOrder.full_name,
       phone: newOrder.phone,
       address: newOrder.address,
+      note: newOrder.note || null,
+      subtotal: newOrder.subtotal || newOrder.total || 0,
+      delivery_fee: newOrder.delivery_fee || 0,
+      discount: newOrder.discount || 0,
       total_amount: newOrder.total,
       status: "new",
       items: formattedItems,
@@ -649,4 +654,6 @@ export async function fileToDataUrl(file: File, maxSize: number = 800, quality: 
     reader.readAsDataURL(file);
   });
 }
+
+
 
