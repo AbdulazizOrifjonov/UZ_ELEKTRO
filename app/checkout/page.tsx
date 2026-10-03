@@ -7,6 +7,7 @@ import { useState, useEffect, useMemo } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { Header } from "@/components/shop/Header";
 import { Footer } from "@/components/shop/Footer";
+import { YMaps, Map as YandexMap, Placemark } from "@pbe/react-yandex-maps";
 import { useCart } from "@/context/CartContext";
 import { useStore } from "@/lib/store";
 import { useAuth } from "@/lib/auth";
@@ -23,7 +24,25 @@ export default function CheckoutPage() {
   const [fullName, setFullName] = useState(user?.fullName ?? "");
   const [phone, setPhone] = useState(user?.phone ?? "");
   const [address, setAddress] = useState(user?.address ?? "");
+  const [location, setLocation] = useState<[number, number] | null>(null);
   const [note, setNote] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const getCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation([position.coords.latitude, position.coords.longitude]);
+          setAddress("Geolokatsiya orqali belgilandi");
+        },
+        (error) => {
+          alert("Joylashuvni aniqlashda xatolik yuz berdi. Iltimos, xaritadan o'zingiz belgilang.");
+        }
+      );
+    } else {
+      alert("Sizning brauzeringiz joylashuvni aniqlashni qo'llab-quvvatlamaydi.");
+    }
+  };
   const [placedOrder, setPlacedOrder] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [appliedPromo, setAppliedPromo] = useState<{ code: string; discount: number; min_order_amount: number } | null>(null);
@@ -78,6 +97,10 @@ export default function CheckoutPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (loading) return;
+    setLoading(true);
+    if (loading) return;
+    
     if (!fullName || !phone || !address) {
       setError("Iltimos, barcha majburiy maydonlarni to'ldiring.");
       return;
@@ -86,6 +109,8 @@ export default function CheckoutPage() {
       setError("Savatchangiz bo'sh.");
       return;
     }
+    
+    setLoading(true);
     
     const siteOrigin =
       typeof window !== "undefined" && window.location.origin
@@ -138,6 +163,7 @@ export default function CheckoutPage() {
           fullName,
           phone,
           address,
+          location,
           note,
           items: itemsData,
           subtotal,
@@ -176,6 +202,7 @@ export default function CheckoutPage() {
     clear();
     try { sessionStorage.removeItem("gws_applied_promo"); } catch {}
     setPlacedOrder(order.order_number);
+    setLoading(false);
   }
 
   if (placedOrder) {
@@ -253,7 +280,36 @@ export default function CheckoutPage() {
               />
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium">Manzil *</label>
+              <label className="mb-1 block text-sm font-medium">Manzil (yoki xaritadan belgilang) *</label>
+              
+              <div className="mb-3">
+                <button
+                  type="button"
+                  onClick={getCurrentLocation}
+                  className="flex w-full items-center justify-center gap-2 rounded-lg border border-navy-900 bg-navy-50 py-2 text-sm font-semibold text-navy-900 transition hover:bg-navy-100"
+                >
+                  📍 Turgan joyimni aniqlash
+                </button>
+              </div>
+
+              <div className="h-64 w-full overflow-hidden rounded-lg border border-navy-100 mb-3 relative z-0">
+                <YMaps query={{ lang: "ru_RU" }}>
+                  <YandexMap
+                    defaultState={{ center: location || [41.2995, 69.2401], zoom: 12 }}
+                    state={{ center: location || [41.2995, 69.2401], zoom: location ? 15 : 12 }}
+                    width="100%"
+                    height="100%"
+                    onClick={(e: any) => {
+                      const coords = e.get("coords");
+                      setLocation(coords);
+                      setAddress("Xaritadan belgilandi");
+                    }}
+                  >
+                    {location && <Placemark geometry={location} />}
+                  </YandexMap>
+                </YMaps>
+              </div>
+
               <input
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
@@ -307,9 +363,10 @@ export default function CheckoutPage() {
             </div>
             <button
               type="submit"
-              className="w-full rounded-xl bg-[#FF5B00] py-3.5 text-sm font-bold text-white hover:bg-[#E04F00] transition shadow-md shadow-orange-500/20"
+              disabled={loading}
+              className="w-full rounded-xl bg-[#FF5B00] py-3.5 text-sm font-bold text-white hover:bg-[#E04F00] transition shadow-md shadow-orange-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Buyurtmani tasdiqlash
+              {loading ? "Yuborilmoqda..." : "Buyurtmani tasdiqlash"}
             </button>
           </aside>
         </form>
@@ -318,3 +375,7 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+
+
+

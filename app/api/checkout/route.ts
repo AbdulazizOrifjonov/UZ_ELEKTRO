@@ -178,7 +178,8 @@ export async function POST(req: Request) {
       `╚══════════════════════════════════════╝\n\n` +
       `👤 <b>Mijoz:</b> ${escapeHtml(data.fullName)}\n` +
       `📞 <b>Telefon:</b> ${escapeHtml(data.phone)}\n` +
-      `📍 <b>Manzil:</b> ${escapeHtml(data.address)}\n` +
+            `📍 <b>Manzil:</b> ${escapeHtml(data.address)}\n` +
+      (data.location ? `🗺 <b>Xarita:</b> <a href="https://yandex.uz/maps/?pt=${data.location[1]},${data.location[0]}&z=18&l=map">Xaritada ko'rish</a>\n` : "") +
       (data.note ? `📝 <b>Izoh:</b> ${escapeHtml(data.note)}\n` : "") +
       (data.promoCode
         ? `🎟 <b>Promokod:</b> <code>${escapeHtml(data.promoCode)}</code> (-${formatPrice(data.discount || 0)} so'm)\n`
@@ -338,4 +339,5 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
   }
 }
+
 
