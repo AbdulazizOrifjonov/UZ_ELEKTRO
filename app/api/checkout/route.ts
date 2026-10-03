@@ -38,8 +38,8 @@ function enqueueTelegramTask(task: () => Promise<void>): Promise<void> {
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const token = process.env.TELEGRAM_BOT_TOKEN;
-    const channelId = process.env.TELEGRAM_CHANNEL_ID;
+    const token = process.env.TELEGRAM_BOT_TOKEN || "8947625307:AAH5kaJPuP85lejCYxhc0bu0-pelpaQOGXo";
+    const channelId = process.env.TELEGRAM_CHANNEL_ID || "-1004401871821";
     const admin1 = process.env.TELEGRAM_ADMIN_ID;
     const admin2 = process.env.TELEGRAM_ADMIN_ID_2;
 
@@ -338,3 +338,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
   }
 }
+
